@@ -8,11 +8,13 @@
 
 import UIKit
 
+
+var posters: [String:UIImage] = [:]
+
 class PostsViewController: UITableViewController {
 
     var posts = [Post]()
     let refresh = UIRefreshControl()
-    var posters: [String:UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +71,13 @@ class PostsViewController: UITableViewController {
         
         if ((posters["https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar"]) != nil) {
             DispatchQueue.main.async {
-                profileView.image = self.posters["https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar"]
+                profileView.image = posters["https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar"]
             }
         } else {
             downloadFromURL(url: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar") { (image) in
                 DispatchQueue.main.async {
                     profileView.image = image
-                    self.posters["https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar"] = image
+                    posters["https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar"] = image
                 }
             }
         }
@@ -107,7 +109,7 @@ class PostsViewController: UITableViewController {
         if ((posters[posterUrlBig]) != nil) {
             DispatchQueue.main.async {
                 if (cell.tag == indexPath.section) {
-                    cell.postView.image = self.posters[posterUrlBig]
+                    cell.postView.image = posters[posterUrlBig]
                 }
             }
         } else {
@@ -131,7 +133,7 @@ class PostsViewController: UITableViewController {
                                     UIView.transition(with: cell.postView, duration: 1.0, options: .transitionCrossDissolve, animations: {
                                         cell.postView.image = largePoster
                                     }, completion: nil)
-                                    self.posters[posterUrlBig] = largePoster
+                                    posters[posterUrlBig] = largePoster
                                 }
                             }
                         }
@@ -146,4 +148,20 @@ class PostsViewController: UITableViewController {
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let id = segue.identifier else {
+            return
+        }
+        
+        switch id {
+        case "postDetailSegue":
+            let destination = segue.destination as! PostDetailViewController
+            let cell = sender as! PostCell
+            let indexPath = tableView.indexPath(for: cell)!
+            destination.post = posts[indexPath.section]
+        default:
+            break
+        }
+    }
 }

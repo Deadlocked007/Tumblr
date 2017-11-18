@@ -43,6 +43,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="postView" destination="chg-sL-Nhf" id="Zpa-iw-T1U"/>
+                                    <segue destination="jDc-ru-efa" kind="show" identifier="postDetailSegue" id="p48-Px-yG2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -53,15 +54,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tumblr" id="eyh-xd-vQB"/>
-                    <connections>
-                        <segue destination="jDc-ru-efa" kind="show" id="1SV-f0-x0k"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVq-KT-8Wj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="508" y="219.94002998500753"/>
         </scene>
-        <!--Post Detail View Controller-->
+        <!--Title-->
         <scene sceneID="R2m-tt-xBx">
             <objects>
                 <viewController id="jDc-ru-efa" customClass="PostDetailViewController" customModule="Tumblr" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,9 +73,9 @@
                                     <constraint firstAttribute="width" secondItem="yZp-Oo-55D" secondAttribute="height" multiplier="1280:853" id="Lah-7u-wCz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-fM-qSH">
-                                <rect key="frame" x="8" y="322" width="359" height="22"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-fM-qSH">
+                                <rect key="frame" x="8" y="322" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -93,6 +91,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dq8-DJ-3sl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="hb5-dh-oZ3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="jKB-ry-5hE">
+                            <connections>
+                                <action selector="onLink:" destination="jDc-ru-efa" id="Zv4-l0-y9F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="postView" destination="yZp-Oo-55D" id="0k1-rl-MKM"/>
+                        <outlet property="summaryLabel" destination="bUH-fM-qSH" id="VUH-lG-cvb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jt-ow-kjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
