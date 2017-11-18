@@ -135,34 +135,34 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b1F-dc-D2c">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g97-wS-Au0">
-                                        <rect key="frame" x="16" y="16" width="30" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="22"/>
-                                        <state key="normal" title="X">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onCancel:" destination="DqZ-dv-XGm" eventType="touchUpInside" id="RqF-Ka-cbV"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="b1F-dc-D2c" firstAttribute="centerY" secondItem="MnR-DE-76h" secondAttribute="centerY" id="6ce-Te-GNW"/>
-                                    <constraint firstItem="g97-wS-Au0" firstAttribute="top" secondItem="MnR-DE-76h" secondAttribute="top" constant="16" id="7AF-Vt-bXh"/>
                                     <constraint firstItem="b1F-dc-D2c" firstAttribute="centerX" secondItem="MnR-DE-76h" secondAttribute="centerX" id="Fod-yN-RTB"/>
                                     <constraint firstAttribute="bottom" secondItem="b1F-dc-D2c" secondAttribute="bottom" id="NFD-kg-jYy"/>
                                     <constraint firstItem="b1F-dc-D2c" firstAttribute="leading" secondItem="MnR-DE-76h" secondAttribute="leading" id="Y3h-Zx-MRf"/>
                                     <constraint firstItem="b1F-dc-D2c" firstAttribute="top" secondItem="MnR-DE-76h" secondAttribute="top" id="nVF-2k-shz"/>
-                                    <constraint firstItem="g97-wS-Au0" firstAttribute="leading" secondItem="MnR-DE-76h" secondAttribute="leading" constant="16" id="tRQ-so-rk2"/>
                                     <constraint firstAttribute="trailing" secondItem="b1F-dc-D2c" secondAttribute="trailing" id="y8X-Dz-1I3"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g97-wS-Au0">
+                                <rect key="frame" x="16" y="36" width="30" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="22"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="DqZ-dv-XGm" eventType="touchUpInside" id="RqF-Ka-cbV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="g97-wS-Au0" firstAttribute="top" secondItem="u4v-GD-35T" secondAttribute="top" constant="16" id="DjQ-S3-SEd"/>
                             <constraint firstItem="MnR-DE-76h" firstAttribute="top" secondItem="Eeq-e2-qkM" secondAttribute="top" id="IMe-mE-2jM"/>
+                            <constraint firstItem="g97-wS-Au0" firstAttribute="leading" secondItem="u4v-GD-35T" secondAttribute="leading" constant="16" id="X2u-09-Rgg"/>
                             <constraint firstItem="MnR-DE-76h" firstAttribute="trailing" secondItem="u4v-GD-35T" secondAttribute="trailing" id="dwX-e5-XOf"/>
                             <constraint firstItem="MnR-DE-76h" firstAttribute="leading" secondItem="u4v-GD-35T" secondAttribute="leading" id="jEr-jT-unq"/>
                             <constraint firstItem="MnR-DE-76h" firstAttribute="bottom" secondItem="u4v-GD-35T" secondAttribute="bottom" id="yCF-sI-Piv"/>
