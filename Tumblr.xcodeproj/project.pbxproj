@@ -19,6 +19,7 @@
 		C76FDB8B1FC029660027D215 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FDB8A1FC029660027D215 /* PostCell.swift */; };
 		C7BDAA011FC0DA9F008BDAC3 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */; };
 		C7BDAA031FC0F1FF008BDAC3 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */; };
+		C7BDAA051FC0F6E4008BDAC3 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BDAA041FC0F6E4008BDAC3 /* InfiniteScrollActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C76FDB8A1FC029660027D215 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
+		C7BDAA041FC0F6E4008BDAC3 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				C74BA2FA1FC02FD6002FC8AA /* Reachability.swift */,
 				C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */,
 				C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */,
+				C7BDAA041FC0F6E4008BDAC3 /* InfiniteScrollActivityView.swift */,
 			);
 			path = Tumblr;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7BDAA051FC0F6E4008BDAC3 /* InfiniteScrollActivityView.swift in Sources */,
 				C74BA2FB1FC02FD6002FC8AA /* Reachability.swift in Sources */,
 				C7BDAA011FC0DA9F008BDAC3 /* PostDetailViewController.swift in Sources */,
 				C76FDB891FC029580027D215 /* PostsViewController.swift in Sources */,

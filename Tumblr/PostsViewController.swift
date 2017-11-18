@@ -15,16 +15,30 @@ class PostsViewController: UITableViewController {
 
     var posts = [Post]()
     let refresh = UIRefreshControl()
+    let multiplier = 20
+    var offset = 0
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refresh
         } else {
             tableView.addSubview(refresh)
         }
-        
         refresh.addTarget(self, action: #selector(loadPosts), for: .valueChanged)
+        
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset
+        insets.bottom += InfiniteScrollActivityView.defaultHeight
+        tableView.contentInset = insets
+        
         tableView.estimatedRowHeight = 250
         if Reachability.isConnectedToNetwork(){
             loadPosts()
@@ -39,18 +53,47 @@ class PostsViewController: UITableViewController {
     }
 
     @objc func loadPosts() {
-        TumblrClient.sharedInstance.getPosts(success: { (posts) in
-            self.posts = posts
+        isMoreDataLoading = true
+        if refresh.isRefreshing {
+            offset = 0
+        }
+        
+        TumblrClient.sharedInstance.getPosts(offset: multiplier * offset, success: { (posts) in
             DispatchQueue.main.async {
+                
+                if self.refresh.isRefreshing {
+                    self.posts = posts
+                } else {
+                    self.posts.append(contentsOf: posts)
+                }
                 self.tableView.reloadData()
                 self.refresh.endRefreshing()
+                self.isMoreDataLoading = false
             }
         }) {
             print("Oh Oh")
             self.refresh.endRefreshing()
+            self.isMoreDataLoading = false
         }
     }
 
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                offset += 1
+                
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                loadPosts()
+            }
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }

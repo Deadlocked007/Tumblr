@@ -12,8 +12,14 @@ class TumblrClient {
     
     static let sharedInstance = TumblrClient()
     
-    func getPosts(success: @escaping ([Post]) -> (), failure: @escaping () -> ()) {
-        let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")!
+    var apiKey = "Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV"
+    func getPosts(offset: Int, success: @escaping ([Post]) -> (), failure: @escaping () -> ()) {
+        let urlString = "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo"
+        var urlComp = URLComponents(string: urlString)
+        var qItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        qItems.append(URLQueryItem(name: "offset", value: String(offset)))
+        urlComp?.queryItems = qItems
+        let url = urlComp!.url!
         let urlSession = URLSession(configuration: .default)
         let task = urlSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
