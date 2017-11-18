@@ -10,21 +10,30 @@ import UIKit
 
 class Post {
     var blogName: String
+    var id: Int
     var postUrl: String
-    var imageLink: String
-    var smallImageLink: String
+    var slug: String
+    var date: Date
+    var noteCount: Int
+    var caption: String
+    var originalPhoto: String
+    var smallPhoto: String
     
     init(postInfo: Dictionary<String, Any>) {
         blogName = postInfo["blog_name"] as! String
+        id = postInfo["id"] as! Int
         postUrl = postInfo["post_url"] as! String
-        let images = postInfo["photos"] as! [Dictionary<String, Any>]
-        let firstImage = images[0]
-        let firstImageOg = firstImage["original_size"] as! Dictionary<String, Any>
-        
-        let alt = firstImage["alt_sizes"] as! [Dictionary<String, Any>]
-        let altFirst = alt[alt.count - 1]
-        imageLink = firstImageOg["url"] as! String
-        smallImageLink = altFirst["url"] as! String
+        slug = postInfo["slug"] as! String
+        date = Date(timeIntervalSince1970: postInfo["timestamp"] as! Double)
+        noteCount = postInfo["note_count"] as! Int
+        caption = postInfo["caption"] as! String
+        let photos = postInfo["photos"] as! [Dictionary<String, Any>]
+        let first = photos[0]
+        let originalSize = first["original_size"] as! Dictionary<String, Any>
+        originalPhoto = originalSize["url"] as! String
+        let altSizes = first["alt_sizes"] as! [Dictionary<String, Any>]
+        let smallest = altSizes[altSizes.count - 1]
+        smallPhoto = smallest["url"] as! String
     }
 }
 
