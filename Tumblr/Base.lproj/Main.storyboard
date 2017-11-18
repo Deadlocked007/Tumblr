@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ZapfDingbats.ttf">
+            <string>ZapfDingbatsITC</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tumblr-->
         <scene sceneID="g5N-6p-BER">
@@ -67,11 +72,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Oo-55D">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Oo-55D">
                                 <rect key="frame" x="0.0" y="64" width="375" height="250"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yZp-Oo-55D" secondAttribute="height" multiplier="1280:853" id="Lah-7u-wCz"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9xn-YK-UvX" appends="YES" id="TT8-Zj-xfQ"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUH-fM-qSH">
                                 <rect key="frame" x="8" y="322" width="359" height="21"/>
@@ -104,8 +113,71 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jt-ow-kjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9xn-YK-UvX">
+                    <connections>
+                        <segue destination="DqZ-dv-XGm" kind="presentation" identifier="fullScreenSegue" id="S0B-BA-5Aa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1240" y="224"/>
+        </scene>
+        <!--Full Screen View Controller-->
+        <scene sceneID="fQq-7f-tcT">
+            <objects>
+                <viewController id="DqZ-dv-XGm" customClass="FullScreenViewController" customModule="Tumblr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eeq-e2-qkM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="MnR-DE-76h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b1F-dc-D2c">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g97-wS-Au0">
+                                        <rect key="frame" x="16" y="16" width="30" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="22"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onCancel:" destination="DqZ-dv-XGm" eventType="touchUpInside" id="RqF-Ka-cbV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="b1F-dc-D2c" firstAttribute="centerY" secondItem="MnR-DE-76h" secondAttribute="centerY" id="6ce-Te-GNW"/>
+                                    <constraint firstItem="g97-wS-Au0" firstAttribute="top" secondItem="MnR-DE-76h" secondAttribute="top" constant="16" id="7AF-Vt-bXh"/>
+                                    <constraint firstItem="b1F-dc-D2c" firstAttribute="centerX" secondItem="MnR-DE-76h" secondAttribute="centerX" id="Fod-yN-RTB"/>
+                                    <constraint firstAttribute="bottom" secondItem="b1F-dc-D2c" secondAttribute="bottom" id="NFD-kg-jYy"/>
+                                    <constraint firstItem="b1F-dc-D2c" firstAttribute="leading" secondItem="MnR-DE-76h" secondAttribute="leading" id="Y3h-Zx-MRf"/>
+                                    <constraint firstItem="b1F-dc-D2c" firstAttribute="top" secondItem="MnR-DE-76h" secondAttribute="top" id="nVF-2k-shz"/>
+                                    <constraint firstItem="g97-wS-Au0" firstAttribute="leading" secondItem="MnR-DE-76h" secondAttribute="leading" constant="16" id="tRQ-so-rk2"/>
+                                    <constraint firstAttribute="trailing" secondItem="b1F-dc-D2c" secondAttribute="trailing" id="y8X-Dz-1I3"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MnR-DE-76h" firstAttribute="top" secondItem="Eeq-e2-qkM" secondAttribute="top" id="IMe-mE-2jM"/>
+                            <constraint firstItem="MnR-DE-76h" firstAttribute="trailing" secondItem="u4v-GD-35T" secondAttribute="trailing" id="dwX-e5-XOf"/>
+                            <constraint firstItem="MnR-DE-76h" firstAttribute="leading" secondItem="u4v-GD-35T" secondAttribute="leading" id="jEr-jT-unq"/>
+                            <constraint firstItem="MnR-DE-76h" firstAttribute="bottom" secondItem="u4v-GD-35T" secondAttribute="bottom" id="yCF-sI-Piv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u4v-GD-35T"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="g97-wS-Au0" id="RqY-pH-HMk"/>
+                        <outlet property="imageView" destination="b1F-dc-D2c" id="OqH-Wr-myF"/>
+                        <outlet property="scrollView" destination="MnR-DE-76h" id="m2g-Lt-fLi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITY-s9-UKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2012" y="223.53823088455775"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BoZ-AC-WRQ">

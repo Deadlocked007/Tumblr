@@ -41,4 +41,19 @@ class PostDetailViewController: UIViewController {
         
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let id = segue.identifier else {
+            return
+        }
+        
+        switch id {
+        case "fullScreenSegue":
+            let destination = segue.destination as! FullScreenViewController
+            destination.image = postView.image
+        default:
+            break
+        }
+    }
 }

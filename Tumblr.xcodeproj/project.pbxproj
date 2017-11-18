@@ -18,6 +18,7 @@
 		C76FDB891FC029580027D215 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FDB881FC029580027D215 /* PostsViewController.swift */; };
 		C76FDB8B1FC029660027D215 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FDB8A1FC029660027D215 /* PostCell.swift */; };
 		C7BDAA011FC0DA9F008BDAC3 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */; };
+		C7BDAA031FC0F1FF008BDAC3 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C76FDB881FC029580027D215 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		C76FDB8A1FC029660027D215 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				C74BA2F81FC02A87002FC8AA /* Helper.swift */,
 				C74BA2FA1FC02FD6002FC8AA /* Reachability.swift */,
 				C7BDAA001FC0DA9F008BDAC3 /* PostDetailViewController.swift */,
+				C7BDAA021FC0F1FF008BDAC3 /* FullScreenViewController.swift */,
 			);
 			path = Tumblr;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				C76FDB891FC029580027D215 /* PostsViewController.swift in Sources */,
 				C76FDB8B1FC029660027D215 /* PostCell.swift in Sources */,
 				C76FDB851FC027FC0027D215 /* Post.swift in Sources */,
+				C7BDAA031FC0F1FF008BDAC3 /* FullScreenViewController.swift in Sources */,
 				C76FDB871FC0280A0027D215 /* TumblrClient.swift in Sources */,
 				C76FDB731FC027F20027D215 /* AppDelegate.swift in Sources */,
 				C74BA2F91FC02A87002FC8AA /* Helper.swift in Sources */,
