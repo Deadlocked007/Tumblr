@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C74BA2F91FC02A87002FC8AA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BA2F81FC02A87002FC8AA /* Helper.swift */; };
+		C74BA2FB1FC02FD6002FC8AA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BA2FA1FC02FD6002FC8AA /* Reachability.swift */; };
 		C76FDB731FC027F20027D215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FDB721FC027F20027D215 /* AppDelegate.swift */; };
 		C76FDB781FC027F20027D215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76FDB761FC027F20027D215 /* Main.storyboard */; };
 		C76FDB7A1FC027F20027D215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C76FDB791FC027F20027D215 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		C74BA2F81FC02A87002FC8AA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		C74BA2FA1FC02FD6002FC8AA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C76FDB6F1FC027F20027D215 /* Tumblr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumblr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76FDB721FC027F20027D215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C76FDB771FC027F20027D215 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				C76FDB881FC029580027D215 /* PostsViewController.swift */,
 				C76FDB8A1FC029660027D215 /* PostCell.swift */,
 				C74BA2F81FC02A87002FC8AA /* Helper.swift */,
+				C74BA2FA1FC02FD6002FC8AA /* Reachability.swift */,
 			);
 			path = Tumblr;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C74BA2FB1FC02FD6002FC8AA /* Reachability.swift in Sources */,
 				C76FDB891FC029580027D215 /* PostsViewController.swift in Sources */,
 				C76FDB8B1FC029660027D215 /* PostCell.swift in Sources */,
 				C76FDB851FC027FC0027D215 /* Post.swift in Sources */,

@@ -12,6 +12,7 @@ class Post {
     var blogName: String
     var postUrl: String
     var imageLink: String
+    var smallImageLink: String
     
     init(postInfo: Dictionary<String, Any>) {
         blogName = postInfo["blog_name"] as! String
@@ -19,7 +20,11 @@ class Post {
         let images = postInfo["photos"] as! [Dictionary<String, Any>]
         let firstImage = images[0]
         let firstImageOg = firstImage["original_size"] as! Dictionary<String, Any>
+        
+        let alt = firstImage["alt_sizes"] as! [Dictionary<String, Any>]
+        let altFirst = alt[alt.count - 1]
         imageLink = firstImageOg["url"] as! String
+        smallImageLink = altFirst["url"] as! String
     }
 }
 

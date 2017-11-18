@@ -12,6 +12,7 @@ class PostsViewController: UITableViewController {
 
     var posts = [Post]()
     let refresh = UIRefreshControl()
+    var posters: [String:UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,16 @@ class PostsViewController: UITableViewController {
         
         refresh.addTarget(self, action: #selector(loadPosts), for: .valueChanged)
         tableView.estimatedRowHeight = 250
-        loadPosts()
+        if Reachability.isConnectedToNetwork(){
+            loadPosts()
+        }else{
+            let alert = UIAlertController(title: "Error", message: "You are not connected to the Internet!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Try Again", style: .cancel, handler: { (alert) in
+                self.loadPosts()
+            }))
+            self.present(alert, animated: true, completion: nil)
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
     }
 
     @objc func loadPosts() {
@@ -53,13 +63,46 @@ class PostsViewController: UITableViewController {
         cell.postView.image = nil
         cell.tag = indexPath.row
         let post = posts[indexPath.row]
-        downloadFromURL(url: post.imageLink) { (image) in
+        var posterUrlSmall = post.smallImageLink
+        let posterUrlBig = post.imageLink
+        if ((posters[posterUrlBig]) != nil) {
             DispatchQueue.main.async {
-                if cell.tag == indexPath.row {
-                    cell.postView.image = image
+                if (cell.tag == indexPath.row) {
+                    cell.postView.image = self.posters[posterUrlBig]
+                }
+            }
+        } else {
+            downloadFromURL(url: posterUrlSmall) { (smallPoster) in
+                DispatchQueue.main.async {
+                    if (cell.tag == indexPath.row) {
+                        cell.postView.alpha = 0.0
+                        cell.postView.image = smallPoster
+                    }
+                    
+                    
+                    UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                        
+                        cell.postView.alpha = 1.0
+                        
+                    }, completion: { (sucess) -> Void in
+                        
+                        downloadFromURL(url: posterUrlBig) { (largePoster) in
+                            DispatchQueue.main.async {
+                                if (cell.tag == indexPath.row) {
+                                    UIView.transition(with: cell.postView, duration: 1.0, options: .transitionCrossDissolve, animations: {
+                                        cell.postView.image = largePoster
+                                    }, completion: nil)
+                                    self.posters[posterUrlBig] = largePoster
+                                }
+                            }
+                        }
+                    })
                 }
             }
         }
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.darkGray
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
 
