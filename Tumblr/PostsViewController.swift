@@ -68,11 +68,13 @@ class PostsViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
                 self.refresh.endRefreshing()
+                self.loadingMoreView!.stopAnimating()
                 self.isMoreDataLoading = false
             }
         }) {
             print("Oh Oh")
             self.refresh.endRefreshing()
+            self.loadingMoreView!.stopAnimating()
             self.isMoreDataLoading = false
         }
     }
